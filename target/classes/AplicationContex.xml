@@ -22,7 +22,7 @@
         <aop:aspect ref="messageServise">
             <!-- Объявление точки внедрения -->
             <aop:pointcut id="gettoy"
-                          expression="execution(* *.*.*.getToy(..))" />
+                          expression="bean(toy))" />
             <aop:before pointcut-ref="gettoy"
                         method="messageBefore"/> <!-- Операция, выполняемая до -->
             <aop:after pointcut-ref="gettoy"
