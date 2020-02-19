@@ -6,6 +6,7 @@ public class Main {
     public static void main(String[] args) {
         ApplicationContext applicationContext =
                 new ClassPathXmlApplicationContext("AplicationContex.xml");
+
         PetService petService = applicationContext.getBean(PetService.class);
         PetService petServiceCat = (PetService) applicationContext.getBean("PetServiceCat");
         PetService petServiceDog = (PetService) applicationContext.getBean("PetServiceDog");
@@ -13,8 +14,8 @@ public class Main {
         petService.createPet().getVoice();
         petServiceCat.createPet().getVoice();
         petServiceDog.createPet().getVoice();
-
         petServiceCat.createPet().getToy();
+
 
     }
 }
