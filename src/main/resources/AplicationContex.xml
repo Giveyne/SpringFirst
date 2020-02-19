@@ -11,6 +11,11 @@
         <constructor-arg type = "ru.test.spring.PetServise.Toy" ref ="toy"/>
     </bean>
     <bean id="PetServiceDog" class="ru.test.spring.PetServise.DogService"/>
+    <bean id="Cat" class="ru.test.spring.PetServise.Cat">
+        <constructor-arg  name = "toy" value="mouse"/>
+    </bean>
+
+
 
     <bean id="toy" class="ru.test.spring.PetServise.Toy">
         <constructor-arg name = "name" value="mouse"/>
@@ -22,7 +27,7 @@
         <aop:aspect ref="messageServise">
             <!-- Объявление точки внедрения -->
             <aop:pointcut id="gettoy"
-                          expression="bean(toy))" />
+                          expression="execution (* *.getToy(..))" />
             <aop:before pointcut-ref="gettoy"
                         method="messageBefore"/> <!-- Операция, выполняемая до -->
             <aop:after pointcut-ref="gettoy"
