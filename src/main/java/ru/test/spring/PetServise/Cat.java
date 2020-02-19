@@ -11,11 +11,11 @@ public class Cat extends Pet{
 
     @Override
     public void getVoice(){
-        System.out.println("Mya miauw");
+        System.out.println("I am cat. Mya miauw");
     }
 
     @Override
     public void getToy() {
-        System.out.println(toy.getName());
+        System.out.println("I am cat's toy - " + toy.getName());
     }
 }
