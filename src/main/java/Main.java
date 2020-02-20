@@ -19,11 +19,15 @@ public class Main {
         petServiceCat.createPet().getVoice();
         //Явное присваивание собаки
         petServiceDog.createPet().getVoice();
-
+        //вызов из AplicationContex
         petServiceCat.createPet().getToy();
+
         // aop before
+        //вызов из Cat.properties
         cat.getToy();
         // aop after
+
+        System.out.println(cat.getName());
 
     }
 }

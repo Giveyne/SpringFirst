@@ -2,27 +2,33 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:aop="http://www.springframework.org/schema/aop"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
- http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
- http://www.springframework.org/schema/aop
- http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+        xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+    <context:property-placeholder location = "classpath:Cat.properties"/>
+
     <bean id="PetServiceCat"
           class="ru.test.spring.PetServise.CatService" primary="true">
         <constructor-arg type = "ru.test.spring.PetServise.Toy" ref ="toy"/>
     </bean>
-    <bean id="PetServiceDog" class="ru.test.spring.PetServise.DogService"/>
-    <bean id="Cat" class="ru.test.spring.PetServise.Cat">
-        <constructor-arg  name = "toy" value="mouse"/>
-    </bean>
-
-
 
     <bean id="toy" class="ru.test.spring.PetServise.Toy">
         <constructor-arg name = "name" value="mouse"/>
     </bean>
 
-    <bean id="messageServise" class="ru.test.spring.PetServise.MessageService"/>
+    <bean id="PetServiceDog" class="ru.test.spring.PetServise.DogService"/>
 
+    <bean id="Cat" class="ru.test.spring.PetServise.Cat">
+        <!--constructor-arg  ref = "toy"/-->
+        <property name="name" value="${Cat.name}"/>
+        <property name="toy" value="${Cat.toy}"/>
+    </bean>
+
+    <bean id="messageServise" class="ru.test.spring.PetServise.MessageService"/>
     <aop:config>
         <aop:aspect ref="messageServise">
             <!-- Объявление точки внедрения -->
